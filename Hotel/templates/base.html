@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Delizio Restaurant Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'Kaiadmin/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Kaiadmin/assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Kaiadmin/assets/css/kaiadmin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Kaiadmin/assets/css/fonts.min.css' %}">
+    <style>
+        .sidebar[data-background-color="dark"] {
+            background: #1572e8 !important;
+        }
+
+        .sidebar[data-background-color="dark"] .logo-header {
+            background: #1572e8 !important;
+        }
+
+        .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a {
+            color: rgba(255, 255, 255, .92);
+        }
+
+        .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a i {
+            color: rgba(255, 255, 255, .84);
+        }
+
+        .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a p {
+            color: #fff !important;
+        }
+
+        .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a:hover,
+        .sidebar[data-background-color="dark"] .nav-secondary > .nav-item.active > a {
+            background: rgba(6, 35, 75, .24) !important;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .sidebar-wrapper {
+            flex: 1 1 auto;
+            min-height: 0;
+        }
+
+        .restaurant-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-width: 0;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.15;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .restaurant-sidebar-brand img {
+            flex: 0 0 54px;
+            width: 54px;
+            height: 36px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        .restaurant-sidebar-brand span {
+            min-width: 0;
+            white-space: normal;
+        }
+
+        .sidebar-account {
+            flex: 0 0 auto;
+            padding: 16px;
+            color: rgba(255, 255, 255, .86);
+            border-top: 1px solid rgba(255, 255, 255, .14);
+        }
+
+        .sidebar-account-user {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            min-width: 0;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-account-avatar {
+            display: grid;
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            color: #39251c;
+            font-weight: 800;
+            background: #f1c775;
+            border-radius: 50%;
+        }
+
+        .sidebar-account-name {
+            overflow: hidden;
+            font-weight: 700;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sidebar-account-label {
+            display: block;
+            color: rgba(255, 255, 255, .58);
+            font-size: .75rem;
+        }
+
+        .sidebar-account form {
+            margin: 0;
+        }
+
+        .sidebar-logout {
+            width: 100%;
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, .28) !important;
+        }
+
+        .sidebar-logout:hover {
+            background: #741c27 !important;
+            border-color: #741c27 !important;
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                display: block;
+            }
+
+            .sidebar .sidebar-wrapper {
+                min-height: auto;
+            }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="wrapper">
+        {% if user.is_authenticated %}
+        <aside class="sidebar" data-background-color="dark">
+            <div class="sidebar-logo">
+                <div class="logo-header" data-background-color="dark">
+                    <a class="restaurant-sidebar-brand" href="{% url 'restaurant:index' %}">
+                        <img src="{% static 'Kaiadmin/assets/img/Delizio Culinary Elegance Logo.png' %}" alt="Delizio Culinary Elegance">
+                        <span>Delizio Restaurant Management System</span>
+                    </a>
+                </div>
+            </div>
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav nav-secondary" aria-label="Main navigation">
+                        <li class="nav-item"><a href="{% url 'restaurant:index' %}"><i class="fas fa-home"></i><p>Dashboard</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:about' %}"><i class="fas fa-info-circle"></i><p>About</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:category' %}"><i class="fas fa-tags"></i><p>Categories</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:menu' %}"><i class="fas fa-utensils"></i><p>Menus</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:menuitem' %}"><i class="fas fa-list"></i><p>Menu Items</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:waiter' %}"><i class="fas fa-users"></i><p>Waiters</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:table' %}"><i class="fas fa-table"></i><p>Tables</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:waitertablee' %}"><i class="fas fa-link"></i><p>WaiterTablee</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:order' %}"><i class="fas fa-shopping-cart"></i><p>Orders</p></a></li>
+                        <li class="nav-item"><a href="{% url 'restaurant:order_details' %}"><i class="fas fa-receipt"></i><p>Order Details</p></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-account">
+                <div class="sidebar-account-user">
+                    <span class="sidebar-account-avatar" aria-hidden="true">{{ user.username|first|upper }}</span>
+                    <span class="sidebar-account-name">
+                        {{ user.username }}
+                        <span class="sidebar-account-label">Signed in</span>
+                    </span>
+                </div>
+                <form method="post" action="{% url 'restaurant:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light btn-sm sidebar-logout">
+                        <i class="fas fa-sign-out-alt me-2" aria-hidden="true"></i>Logout
+                    </button>
+                </form>
+            </div>
+        </aside>
+        <div class="main-panel">
+            <header class="main-header">
+                <nav class="navbar navbar-header navbar-header-transparent border-bottom">
+                    <div class="container-fluid justify-content-end">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold">{{ user.username }}</span>
+                            <form method="post" action="{% url 'restaurant:logout' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-sm">Logout</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        {% endif %}
+        <main class="container-fluid py-4">
+            {% block content %}{% endblock %}
+        </main>
+        {% if user.is_authenticated %}
+        </div>
+        {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <script src="{% static 'Kaiadmin/assets/js/core/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'Kaiadmin/assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'Kaiadmin/assets/js/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Kaiadmin/assets/js/kaiadmin.min.js' %}"></script>
+    {% endif %}
+</body>
+</html>

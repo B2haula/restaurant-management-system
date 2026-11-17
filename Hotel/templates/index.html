@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Delizio Restaurant Management System{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <div>
+            <h2>Restaurant Dashboard</h2>
+            <p class="dashboard-subtitle">Welcome, {{ user.username }}</p>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <a href="{% url 'restaurant:category' %}" class="dashboard-card">
+            <span>{{ category_count }}</span>
+            <strong>Categories</strong>
+        </a>
+        <a href="{% url 'restaurant:menu' %}" class="dashboard-card">
+            <span>{{ menu_count }}</span>
+            <strong>Menus</strong>
+        </a>
+        <a href="{% url 'restaurant:menuitem' %}" class="dashboard-card">
+            <span>{{ menu_item_count }}</span>
+            <strong>Menu Items</strong>
+        </a>
+        <a href="{% url 'restaurant:waiter' %}" class="dashboard-card">
+            <span>{{ waiter_count }}</span>
+            <strong>Waiters</strong>
+        </a>
+        <a href="{% url 'restaurant:table' %}" class="dashboard-card">
+            <span>{{ table_count }}</span>
+            <strong>Tables</strong>
+        </a>
+        <a href="{% url 'restaurant:order' %}" class="dashboard-card">
+            <span>{{ order_count }}</span>
+            <strong>Orders</strong>
+        </a>
+    </div>
+</section>
+{% endblock %}

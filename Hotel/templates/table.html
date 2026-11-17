@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Tables</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT TABLES</h1>
+    </header>
+
+    <main>
+
+        <h2>Add New Table</h2>
+
+        <form id="table-form">
+
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="">Select Location</option>
+                <option value="window">Window</option>
+                <option value="center">Center</option>
+                <option value="balcony">Balcony</option>
+            </select>
+
+            <label for="tablee_status">Table Status:</label>
+            <select
+                id="tablee_status"
+                name="tablee_status"
+                required
+            >
+                <option value="">Select Table Status</option>
+                <option value="occupied">Occupied</option>
+                <option value="Available">Available</option>
+            </select>
+
+            <label for="capacity">Capacity:</label>
+            <input
+                type="text"
+                id="capacity"
+                name="capacity"
+                maxlength="10"
+                placeholder="Enter table capacity"
+                required
+            >
+
+            <button type="submit">Save Table</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Restaurant Table Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Table ID</th>
+                    <th>Location</th>
+                    <th>Table Status</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-list">
+                <!-- Table records will appear here -->
+            </tbody>
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Categories</title>
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT CATEGORIES</h1>
+    </header>
+
+    <main>
+        <h2>Add Category</h2>
+
+        <form id="category-form">
+            <label for="category_name">Category Name:</label>
+            <input
+                type="text"
+                id="category_name"
+                name="category_name"
+                maxlength="30"
+                required
+            >
+
+            <button type="submit">Save Category</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Category Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="category-list">
+                <!-- Categories will appear here -->
+            </tbody>
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

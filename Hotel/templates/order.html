@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant Orders</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT ORDERS</h1>
+    </header>
+
+    <main>
+
+        <h2>Add New Order</h2>
+
+        <form id="order-form">
+
+            <label for="order_type">Order Type:</label>
+            <select id="order_type" name="order_type" required>
+                <option value="">Select Order Type</option>
+                <option value="Dine-in">Dine-in</option>
+                <option value="Takeaway">Takeaway</option>
+                <option value="Delivery">Delivery</option>
+            </select>
+
+            <label for="customer">Customer:</label>
+            <input
+                type="text"
+                id="customer"
+                name="customer"
+                maxlength="20"
+                placeholder="Enter customer name"
+                required
+            >
+
+            <label for="menu_id">Menu ID:</label>
+            <input
+                type="number"
+                id="menu_id"
+                name="menu_id"
+                min="1"
+                placeholder="Enter menu ID"
+            >
+
+            <label for="order_status">Order Status:</label>
+            <select
+                id="order_status"
+                name="order_status"
+                required
+            >
+                <option value="">Select Order Status</option>
+                <option value="preparing">Preparing</option>
+                <option value="pending">Pending</option>
+                <option value="available">Available</option>
+            </select>
+
+            <label for="amount">Amount:</label>
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                step="0.01"
+                min="0"
+                placeholder="Enter amount"
+                required
+            >
+
+            <button type="submit">Save Order</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Order Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+
+            <thead>
+                <tr>
+                    <th>Order Type</th>
+                    <th>Customer</th>
+                    <th>Menu ID</th>
+                    <th>Order Status</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="order-list">
+                <!-- Order records will appear here -->
+            </tbody>
+
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login | Delizio Restaurant Management System{% endblock %}
+
+{% block extra_head %}
+<style>
+    .login-screen {
+        position: relative;
+        display: grid;
+        min-height: calc(100vh - 3rem);
+        margin: -1.5rem -12px;
+        padding: 32px 18px;
+        overflow: hidden;
+        place-items: center;
+        background:
+            radial-gradient(circle at 82% 18%, rgba(126, 174, 226, .2), transparent 23%),
+            radial-gradient(circle at 15% 88%, rgba(48, 101, 159, .25), transparent 27%),
+            linear-gradient(135deg, #07152f 0%, #0b2b50 52%, #123b65 100%);
+    }
+
+    .login-screen::before {
+        position: absolute;
+        top: -245px;
+        left: -180px;
+        width: 540px;
+        height: 540px;
+        border: 1px solid rgba(190, 216, 245, .16);
+        border-radius: 50%;
+        box-shadow:
+            0 0 0 34px rgba(190, 216, 245, .045),
+            0 0 0 78px rgba(190, 216, 245, .035),
+            0 0 0 132px rgba(190, 216, 245, .025);
+        content: "";
+        pointer-events: none;
+    }
+
+    .login-screen::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: min(48vw, 560px);
+        height: min(48vh, 390px);
+        background: linear-gradient(135deg, rgba(89, 145, 203, .3), rgba(4, 17, 39, .42));
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        content: "";
+        pointer-events: none;
+    }
+
+    .login-form {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: min(100%, 470px);
+        margin: 0;
+        padding: 34px 38px 28px;
+        background: rgba(255, 255, 255, .98);
+        border: 1px solid rgba(255, 255, 255, .75);
+        border-radius: 16px;
+        box-shadow: 0 24px 70px rgba(1, 10, 25, .38);
+    }
+
+    .login-brand {
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .login-brand-logo {
+        width: 76px;
+        height: 51px;
+        object-fit: contain;
+        border-radius: 6px;
+    }
+
+    .login-brand-name {
+        display: block;
+        color: #1a2035;
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+
+    .login-brand-description {
+        display: block;
+        color: #8898aa;
+        font-size: .95rem;
+    }
+
+    .login-heading {
+        margin: 0 0 22px;
+        color: #344054;
+        font-size: 1.05rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .login-form p {
+        margin: 0 0 18px;
+    }
+
+    .login-form label {
+        display: block;
+        margin-bottom: 7px;
+        color: #344054;
+        font-weight: 500;
+    }
+
+    .login-form input {
+        min-height: 48px;
+        border: 1px solid #d5dce7;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .login-form input:focus {
+        border-color: #315f96;
+        box-shadow: 0 0 0 .2rem rgba(49, 95, 150, .16);
+    }
+
+    .login-form .btn {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 8px;
+        background: linear-gradient(120deg, #1a4d83, #0d2f58);
+        border-color: #174373;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .login-form .btn:hover,
+    .login-form .btn:focus {
+        background: linear-gradient(120deg, #235f9e, #123c6d);
+        border-color: #235f9e;
+    }
+
+    .login-note {
+        margin: 16px 0 0;
+        color: #667085;
+        font-size: .9rem;
+        text-align: center;
+    }
+
+    .login-error {
+        margin-bottom: 16px;
+        color: #b42318;
+    }
+
+    @media (max-width: 480px) {
+        .login-form {
+            padding: 28px 22px 24px;
+        }
+
+        .login-screen::before {
+            left: -300px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-screen">
+    <form method="post" class="card card-body login-form">
+        {% csrf_token %}
+        <div class="login-brand">
+            <img
+                src="{% static 'Kaiadmin/assets/img/Delizio Culinary Elegance Logo.png' %}"
+                alt="Delizio Culinary Elegance"
+                class="login-brand-logo"
+            >
+            <div>
+                <span class="login-brand-name">Delizio Restaurant</span>
+                <span class="login-brand-description">Restaurant Management System</span>
+            </div>
+        </div>
+        <h2 class="login-heading">Sign in to your account</h2>
+        {% if form.non_field_errors %}
+            <div class="login-error">{{ form.non_field_errors }}</div>
+        {% endif %}
+        {{ form.as_p }}
+        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+        <button type="submit" class="btn btn-primary">Log In</button>
+        <p class="login-note">Secure access for Delizio Restaurant staff.</p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Details</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT ORDER DETAILS</h1>
+    </header>
+
+    <main>
+
+        <h2>Add Order Details</h2>
+
+        <form id="order-details-form">
+
+            <label for="order_id">Order ID:</label>
+            <input
+                type="number"
+                id="order_id"
+                name="order_id"
+                min="1"
+                placeholder="Enter order ID"
+                required
+            >
+
+            <label for="quantity">Quantity:</label>
+            <input
+                type="text"
+                id="quantity"
+                name="quantity"
+                maxlength="20"
+                placeholder="Enter quantity"
+                required
+            >
+
+            <button type="submit">Save Order Details</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Order Details Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+
+            <thead>
+                <tr>
+                    <th>Order Details ID</th>
+                    <th>Order ID</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="order-details-list">
+                <!-- Records will appear here -->
+            </tbody>
+
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

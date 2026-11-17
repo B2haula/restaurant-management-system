@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurant WaiterTablee</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT WAITERTABLEE</h1>
+    </header>
+
+    <main>
+
+        <h2>Assign Waiter to Table</h2>
+
+        <form id="waiter-table-form">
+            <label for="waiter_id">Waiter ID:</label>
+            <input
+                type="number"
+                id="waiter_id"
+                name="waiter_id"
+                min="1"
+                placeholder="Enter waiter ID"
+                required
+            >
+
+            <label for="tablee_id">Table ID:</label>
+            <input
+                type="number"
+                id="tablee_id"
+                name="tablee_id"
+                min="1"
+                placeholder="Enter table ID"
+                required
+            >
+
+            <button type="submit">Save Assignment</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>WaiterTablee Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>WaiterTablee ID</th>
+                    <th>Waiter ID</th>
+                    <th>Table ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="waiter-table-list">
+                <!-- WaiterTablee records will appear here -->
+            </tbody>
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT MENU</h1>
+    </header>
+
+    <main>
+
+        <h2>Add Menu Item</h2>
+
+        <form id="menu-form">
+
+            <label for="menu-name">Menu Name:</label>
+            <input
+                type="text"
+                id="menu-name"
+                name="menu_name"
+                maxlength="20"
+                required
+            >
+
+            <label for="price">Price:</label>
+            <input
+                type="number"
+                id="price"
+                name="price"
+                step="0.01"
+                min="0"
+                required
+            >
+
+            <label for="availability">Availability:</label>
+            <select id="availability" name="availability" required>
+                <option value="">Select Availability</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="category-id">Category ID:</label>
+            <input
+                type="number"
+                id="category-id"
+                name="category_id"
+                min="1"
+            >
+
+            <button type="submit">Save Menu</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Menu Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Menu ID</th>
+                    <th>Menu Name</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Category ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="menu-list">
+                <!-- Menu records will appear here -->
+            </tbody>
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

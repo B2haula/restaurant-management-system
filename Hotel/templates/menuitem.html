@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu Items</title>
+
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/kaiadmin.min.css">
+    <link rel="stylesheet" href="../static/Kaiadmin/assets/css/fonts.min.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>RESTAURANT MENU ITEMS</h1>
+    </header>
+
+    <main>
+
+        <h2>Add Menu Item</h2>
+
+        <form id="menu-item-form">
+
+            <label for="menu-item">Menu Item:</label>
+            <input
+                type="text"
+                id="menu-item"
+                name="menu_item"
+                maxlength="30"
+                required
+            >
+
+            <label for="menu-id">Menu ID:</label>
+            <input
+                type="number"
+                id="menu-id"
+                name="menu_id"
+                min="1"
+                required
+            >
+
+            <button type="submit">Save Menu Item</button>
+            <button type="reset">Clear</button>
+
+        </form>
+
+        <h2>Menu Item Records</h2>
+
+        <div class="table-responsive">
+        <table class="table table-head-bg-primary table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Menu Item ID</th>
+                    <th>Menu Item</th>
+                    <th>Menu ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="menu-item-list">
+                <!-- Records will appear here -->
+            </tbody>
+        </table>
+        </div>
+
+    </main>
+
+</body>
+</html>

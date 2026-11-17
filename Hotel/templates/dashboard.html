@@ -1,0 +1,1108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="{% static 'Kaiadmin/' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Delizio Restaurant Management Dashboard</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      rel="icon"
+      href="assets/img/kaiadmin/icon.svg"
+      type="image/x-icon"
+    />
+
+    <!-- Fonts and icons -->
+    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css?v=restaurant" />
+    <link rel="stylesheet" href="assets/css/plugins.min.css?v=restaurant" />
+    <link rel="stylesheet" href="assets/css/kaiadmin.min.css?v=restaurant" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="assets/css/demo.css" />
+    <style>
+      .sidebar[data-background-color="dark"] {
+        background: #1572e8 !important;
+      }
+      .sidebar[data-background-color="dark"] .logo-header {
+        background: #1572e8 !important;
+      }
+      .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a {
+        color: rgba(255, 255, 255, .92);
+      }
+      .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a i {
+        color: rgba(255, 255, 255, .84);
+      }
+      .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a p {
+        color: #fff !important;
+      }
+      .sidebar[data-background-color="dark"] .nav-secondary > .nav-item > a:hover,
+      .sidebar[data-background-color="dark"] .nav-secondary > .nav-item.active > a {
+        background: rgba(6, 35, 75, .24) !important;
+      }
+      .sidebar .nav-section,
+      .sidebar .nav-section ~ .nav-item {
+        display: none !important;
+      }
+      .dashboard-welcome {
+        margin-bottom: 24px;
+      }
+      .dashboard-welcome .card-body {
+        padding: clamp(24px, 4vw, 48px);
+      }
+      .dashboard-welcome h2 {
+        max-width: 760px;
+        margin: 0 0 18px;
+        color: #fff;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -.04em;
+        line-height: 1.1;
+      }
+      .dashboard-welcome p {
+        max-width: 960px;
+        margin: 0;
+        color: rgba(255, 255, 255, .92);
+        font-size: clamp(1rem, 1.3vw, 1.15rem);
+        line-height: 1.75;
+      }
+      .restaurant-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: calc(100% - 88px);
+        max-width: 230px;
+        min-width: 0;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.15;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      .sidebar .logo-header .restaurant-brand {
+        color: #fff !important;
+      }
+      .restaurant-brand img {
+        flex: 0 0 54px;
+        width: 54px;
+        height: 36px;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 5px;
+      }
+      .restaurant-brand span {
+        min-width: 0;
+        white-space: normal;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar .sidebar-wrapper {
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+      .sidebar-account {
+        flex: 0 0 auto;
+        padding: 16px;
+        color: rgba(255, 255, 255, .86);
+        border-top: 1px solid rgba(255, 255, 255, .14);
+      }
+      .sidebar-account-user {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        min-width: 0;
+        margin-bottom: 12px;
+      }
+      .sidebar-account-avatar {
+        display: grid;
+        flex: 0 0 38px;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        color: #39251c;
+        font-weight: 800;
+        background: #f1c775;
+        border-radius: 50%;
+      }
+      .sidebar-account-name {
+        overflow: hidden;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar-account-label {
+        display: block;
+        color: rgba(255, 255, 255, .58);
+        font-size: .75rem;
+      }
+      .sidebar-account form {
+        margin: 0;
+      }
+      .sidebar-logout {
+        width: 100%;
+        color: #fff !important;
+        border-color: rgba(255, 255, 255, .28) !important;
+      }
+      .sidebar-logout:hover {
+        background: #741c27 !important;
+        border-color: #741c27 !important;
+      }
+      .logo-header .navbar-brand {
+        display: none !important;
+      }
+      @media (max-width: 991px) {
+        .sidebar {
+          display: block;
+        }
+        .sidebar .sidebar-wrapper {
+          min-height: auto;
+        }
+        .sidebar-account {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="{% url 'restaurant:index' %}" class="logo restaurant-brand">
+              <img src="{% static 'Kaiadmin/assets/img/Delizio Culinary Elegance Logo.png' %}" alt="Delizio Culinary Elegance">
+              <span>Delizio Restaurant Management System</span>
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item active">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#dashboard"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-home"></i>
+                  <p>Dashboard</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="dashboard">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{% url 'restaurant:index' %}">
+                        <span class="sub-item">Overview</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item"><a href="{% url 'restaurant:about' %}"><i class="fas fa-info-circle"></i><p>About</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:category' %}"><i class="fas fa-tags"></i><p>Categories</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:menu' %}"><i class="fas fa-utensils"></i><p>Menus</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:menuitem' %}"><i class="fas fa-list"></i><p>Menu Items</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:waiter' %}"><i class="fas fa-users"></i><p>Waiters</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:table' %}"><i class="fas fa-table"></i><p>Tables</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:waitertablee' %}"><i class="fas fa-link"></i><p>WaiterTablee</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:order' %}"><i class="fas fa-shopping-cart"></i><p>Orders</p></a></li>
+              <li class="nav-item"><a href="{% url 'restaurant:order_details' %}"><i class="fas fa-receipt"></i><p>Order Details</p></a></li>
+              <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Components</h4>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#base">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Base</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="base">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="components/avatars.html">
+                        <span class="sub-item">Avatars</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/buttons.html">
+                        <span class="sub-item">Buttons</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/gridsystem.html">
+                        <span class="sub-item">Grid System</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/panels.html">
+                        <span class="sub-item">Panels</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/notifications.html">
+                        <span class="sub-item">Notifications</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/sweetalert.html">
+                        <span class="sub-item">Sweet Alert</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/font-awesome-icons.html">
+                        <span class="sub-item">Font Awesome Icons</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/simple-line-icons.html">
+                        <span class="sub-item">Simple Line Icons</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="components/typography.html">
+                        <span class="sub-item">Typography</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                  <i class="fas fa-th-list"></i>
+                  <p>Sidebar Layouts</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="sidebarLayouts">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="sidebar-style-2.html">
+                        <span class="sub-item">Sidebar Style 2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="icon-menu.html">
+                        <span class="sub-item">Icon Menu</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#forms">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Forms</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="forms">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="forms/forms.html">
+                        <span class="sub-item">Basic Form</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#tables">
+                  <i class="fas fa-table"></i>
+                  <p>Tables</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="tables">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="tables/tables.html">
+                        <span class="sub-item">Basic Table</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="tables/datatables.html">
+                        <span class="sub-item">Datatables</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#maps">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <p>Maps</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="maps">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="maps/googlemaps.html">
+                        <span class="sub-item">Google Maps</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="maps/jsvectormap.html">
+                        <span class="sub-item">Jsvectormap</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#charts">
+                  <i class="far fa-chart-bar"></i>
+                  <p>Charts</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="charts">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="charts/charts.html">
+                        <span class="sub-item">Chart Js</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="charts/sparkline.html">
+                        <span class="sub-item">Sparkline</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="widgets.html">
+                  <i class="fas fa-desktop"></i>
+                  <p>Widgets</p>
+                  <span class="badge badge-success">4</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../documentation/index.html">
+                  <i class="fas fa-file"></i>
+                  <p>Documentation</p>
+                  <span class="badge badge-secondary">1</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#submenu">
+                  <i class="fas fa-bars"></i>
+                  <p>Menu Levels</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="submenu">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a data-bs-toggle="collapse" href="#subnav1">
+                        <span class="sub-item">Level 1</span>
+                        <span class="caret"></span>
+                      </a>
+                      <div class="collapse" id="subnav1">
+                        <ul class="nav nav-collapse subnav">
+                          <li>
+                            <a href="#">
+                              <span class="sub-item">Level 2</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <span class="sub-item">Level 2</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <a data-bs-toggle="collapse" href="#subnav2">
+                        <span class="sub-item">Level 1</span>
+                        <span class="caret"></span>
+                      </a>
+                      <div class="collapse" id="subnav2">
+                        <ul class="nav nav-collapse subnav">
+                          <li>
+                            <a href="#">
+                              <span class="sub-item">Level 2</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="sub-item">Level 1</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-account">
+          <div class="sidebar-account-user">
+            <span class="sidebar-account-avatar" aria-hidden="true">{{ user.username|first|upper }}</span>
+            <span class="sidebar-account-name">
+              {{ user.username }}
+              <span class="sidebar-account-label">Signed in</span>
+            </span>
+          </div>
+          <form method="post" action="{% url 'restaurant:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light btn-sm sidebar-logout">
+              <i class="fas fa-sign-out-alt me-2" aria-hidden="true"></i>Logout
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="{% url 'restaurant:index' %}" class="logo restaurant-brand">
+                <img src="{% static 'Kaiadmin/assets/img/Delizio Culinary Elegance Logo.png' %}" alt="Delizio Culinary Elegance">
+                <span>Delizio Restaurant Management System</span>
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-layer-group"></i>
+                  </a>
+                  <div class="dropdown-menu quick-actions animated fadeIn">
+                    <div class="quick-actions-header">
+                      <span class="title mb-1">Quick Actions</span>
+                      <span class="subtitle op-7">Shortcuts</span>
+                    </div>
+                    <div class="quick-actions-scroll scrollbar-outer">
+                      <div class="quick-actions-items">
+                        <div class="row m-0">
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div class="avatar-item bg-danger rounded-circle">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <span class="text">Calendar</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-warning rounded-circle"
+                              >
+                                <i class="fas fa-map"></i>
+                              </div>
+                              <span class="text">Maps</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div class="avatar-item bg-info rounded-circle">
+                                <i class="fas fa-file-excel"></i>
+                              </div>
+                              <span class="text">Reports</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-success rounded-circle"
+                              >
+                                <i class="fas fa-envelope"></i>
+                              </div>
+                              <span class="text">Emails</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-primary rounded-circle"
+                              >
+                                <i class="fas fa-file-invoice-dollar"></i>
+                              </div>
+                              <span class="text">Invoice</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-secondary rounded-circle"
+                              >
+                                <i class="fas fa-credit-card"></i>
+                              </div>
+                              <span class="text">Payments</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+            >
+              <div>
+                <h3 class="fw-bold mb-3">Delizio Restaurant Dashboard</h3>
+                <h6 class="op-7 mb-2">Delizio Restaurant Management Overview</h6>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="{% url 'restaurant:category' %}" class="btn btn-label-info btn-round me-2">Manage Records</a>
+                <a href="{% url 'restaurant:order' %}" class="btn btn-primary btn-round">Manage Orders</a>
+              </div>
+            </div>
+            <section class="card card-primary card-round dashboard-welcome" aria-labelledby="dashboard-welcome-title">
+              <div class="card-body">
+                <h2 id="dashboard-welcome-title">Welcome to Delizio Restaurant</h2>
+                <p>Delizio is a workspace for managing the records behind daily restaurant service. Maintain menu categories, prices and availability; record orders and their quantities; and manage table status, waiter details and table assignments. The dashboard brings these records together and highlights today's sales from confirmed orders and confirmed-order history.</p>
+              </div>
+            </section>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:category' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-users"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Categories</p>
+                          <h4 class="card-title">{{ category_count }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:menu' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-info bubble-shadow-small"
+                        >
+                          <i class="fas fa-user-check"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Menus</p>
+                          <h4 class="card-title">{{ menu_count }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:waiter' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-success bubble-shadow-small"
+                        >
+                          <i class="fas fa-luggage-cart"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Waiters</p>
+                          <h4 class="card-title">{{ waiter_count }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:order' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-secondary bubble-shadow-small"
+                        >
+                          <i class="far fa-check-circle"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Orders</p>
+                          <h4 class="card-title">{{ order_count }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:menuitem' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body"><div class="row align-items-center"><div class="col-icon"><div class="icon-big text-center icon-primary bubble-shadow-small"><i class="fas fa-list"></i></div></div><div class="col col-stats ms-3 ms-sm-0"><div class="numbers"><p class="card-category">Menu Items</p><h4 class="card-title">{{ menu_item_count }}</h4></div></div></div></div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:table' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body"><div class="row align-items-center"><div class="col-icon"><div class="icon-big text-center icon-info bubble-shadow-small"><i class="fas fa-chair"></i></div></div><div class="col col-stats ms-3 ms-sm-0"><div class="numbers"><p class="card-category">Tables</p><h4 class="card-title">{{ table_count }}</h4></div></div></div></div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:waitertablee' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body"><div class="row align-items-center"><div class="col-icon"><div class="icon-big text-center icon-success bubble-shadow-small"><i class="fas fa-link"></i></div></div><div class="col col-stats ms-3 ms-sm-0"><div class="numbers"><p class="card-category">WaiterTablee</p><h4 class="card-title">{{ waiter_table_count }}</h4></div></div></div></div>
+                </a>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <a href="{% url 'restaurant:order_details' %}" class="card card-stats card-round text-decoration-none">
+                  <div class="card-body"><div class="row align-items-center"><div class="col-icon"><div class="icon-big text-center icon-secondary bubble-shadow-small"><i class="fas fa-receipt"></i></div></div><div class="col col-stats ms-3 ms-sm-0"><div class="numbers"><p class="card-category">Order Details</p><h4 class="card-title">{{ order_detail_count }}</h4></div></div></div></div>
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-round">
+                  <div class="card-header">
+                    <h4 class="card-title">WaiterTablee Records</h4>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-head-bg-primary table-hover align-items-center mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">WaiterTablee ID</th>
+                            <th scope="col">Waiter ID</th>
+                            <th scope="col">Table ID</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for assignment in waiter_table_records %}
+                          <tr>
+                            <td>{{ assignment.waitertablee_id }}</td>
+                            <td>{{ assignment.waiter_id }}</td>
+                            <td>{{ assignment.tablee_id }}</td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                            <td colspan="3" class="text-center py-4">No WaiterTablee records yet.</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-primary card-round">
+                  <div class="card-header">
+                    <div class="card-head-row">
+                      <div class="card-title">Daily Sales</div>
+                    </div>
+                    <div class="card-category">{{ today|date:"F j, Y" }}</div>
+                  </div>
+                  <div class="card-body pb-0">
+                    <div class="mb-4 mt-2">
+                      <h1>{{ daily_sales|floatformat:2 }}</h1>
+                      <p class="mb-0">{{ confirmed_order_count }} confirmed order{{ confirmed_order_count|pluralize }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-round">
+                  <div class="card-header">
+                    <div class="card-head-row card-tools-still-right">
+                      <h4 class="card-title">Payment History</h4>
+                    </div>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-head-bg-primary table-hover align-items-center mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Menu ID</th>
+                            <th scope="col" class="text-end">Order Date</th>
+                            <th scope="col" class="text-end">Amount</th>
+                            <th scope="col" class="text-end">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for order in payment_history %}
+                          <tr>
+                            <th scope="row">
+                              <i class="fa fa-check text-success me-2"></i>
+                              Order #{{ order.pk }}
+                            </th>
+                            <td>{{ order.customer }}</td>
+                            <td>{{ order.menu_id|default:"-" }}</td>
+                            <td class="text-end">{{ order.order_date|date:"M j, Y" }}</td>
+                            <td class="text-end">{{ order.amount|floatformat:2 }}</td>
+                            <td class="text-end">
+                              <span class="badge badge-success">Confirmed</span>
+                            </td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                            <td colspan="6" class="text-center py-4">No confirmed payments yet.</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid text-center">
+            <div class="copyright">
+              &copy; {% now "Y" %} Delizio Restaurant Management System
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Custom template | don't include it in your project! -->
+      <div class="custom-template">
+        <div class="title">Settings</div>
+        <div class="custom-content">
+          <div class="switcher">
+            <div class="switch-block">
+              <h4>Logo Header</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="selected changeLogoHeaderColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="purple"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="light-blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="green"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="orange"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="red"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="white"
+                ></button>
+                <br />
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="dark2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="purple2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="light-blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="green2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="orange2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="red2"
+                ></button>
+              </div>
+            </div>
+            <div class="switch-block">
+              <h4>Navbar Header</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="purple"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="light-blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="green"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="orange"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="red"
+                ></button>
+                <button
+                  type="button"
+                  class="selected changeTopBarColor"
+                  data-color="white"
+                ></button>
+                <br />
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="dark2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="purple2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="light-blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="green2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="orange2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="red2"
+                ></button>
+              </div>
+            </div>
+            <div class="switch-block">
+              <h4>Sidebar</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="changeSideBarColor"
+                  data-color="white"
+                ></button>
+                <button
+                  type="button"
+                  class="selected changeSideBarColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeSideBarColor"
+                  data-color="dark2"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="custom-toggle">
+          <i class="icon-settings"></i>
+        </div>
+      </div>
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="assets/js/kaiadmin.min.js?v=restaurant"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+  </body>
+</html>

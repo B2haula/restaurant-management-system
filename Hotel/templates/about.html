@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | Delizio Restaurant Management System{% endblock %}
+
+{% block extra_head %}
+<style>
+    .about-page {
+        max-width: 1180px;
+        margin: 0 auto;
+        color: #33251d;
+    }
+
+    .about-hero {
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .about-hero-content {
+        max-width: 720px;
+        padding: clamp(24px, 5vw, 56px);
+    }
+
+    .about-hero h1 {
+        max-width: 690px;
+        margin: 0 0 20px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -.04em;
+        line-height: 1.1;
+    }
+
+    .about-hero p {
+        max-width: 650px;
+        margin: 0;
+        color: rgba(255, 255, 255, .9);
+        font-size: clamp(1rem, 1.5vw, 1.15rem);
+        line-height: 1.75;
+    }
+
+    .about-section {
+        margin-top: 56px;
+    }
+
+    .about-section-heading {
+        max-width: 720px;
+        margin-bottom: 24px;
+    }
+
+    .about-section-heading h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 800;
+        letter-spacing: -.04em;
+    }
+
+    .about-section-heading p {
+        margin: 0;
+        color: #71635b;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .about-features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .about-feature,
+    .about-contact-card {
+        padding: 26px;
+        background: #fff;
+        border: 1px solid #eee4da;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(67, 42, 27, .06);
+    }
+
+    .about-feature-icon {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 20px;
+        place-items: center;
+        color: #a95731;
+        font-size: 1.2rem;
+        background: #fff0e4;
+        border-radius: 14px;
+    }
+
+    .about-feature h3,
+    .about-contact-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+        font-weight: 800;
+    }
+
+    .about-feature p,
+    .about-contact-card p {
+        margin: 0;
+        color: #270497;
+        line-height: 1.7;
+    }
+
+    .about-contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-bottom: 36px;
+    }
+
+    .about-contact-card a {
+        color: #1f0a8a;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .about-contact-card a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 800px) {
+        .about-features {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .about-contact {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <section class="about-hero card card-primary card-round">
+        <div class="about-hero-content">
+            <h1>Welcome to Delizio Restaurant</h1>
+            <p>
+                Delizio is a workspace for managing the records behind daily restaurant
+                service. Maintain menu categories, prices and availability; record orders
+                and their quantities; and manage table status, waiter details and table
+                assignments. The dashboard brings these records together and highlights
+                today's sales from confirmed orders and confirmed-order history.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-tools-heading">
+        <div class="about-section-heading">
+            <h2 id="about-tools-heading"></h2>
+            <p>
+               
+            </p>
+        </div>
+        <div class="about-features">
+            <article class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"><i class="fas fa-utensils"></i></span>
+                <h3>Set up your menu</h3>
+                <p>Organize menu categories, prices, availability and individual menu items.</p>
+            </article>
+            <article class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"><i class="fas fa-clipboard-list"></i></span>
+                <h3>Record and review orders</h3>
+                <p>Track each customer's order type, date, menu, amount and status, with quantities in order details.</p>
+            </article>
+            <article class="about-feature">
+                <span class="about-feature-icon" aria-hidden="true"><i class="fas fa-users"></i></span>
+                <h3>Manage tables and waiters</h3>
+                <p>Maintain table location, capacity and status, keep waiter details, and record waiter-to-table assignments.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-contact-heading">
+        <div class="about-section-heading">
+            <h2 id="about-contact-heading">We'd love to hear from you.</h2>
+            <p>Need a hand or want to learn more? Reach out using our sample contact details below.</p>
+        </div>
+        <div class="about-contact">
+            <article class="about-contact-card">
+                <h3>Email us</h3>
+                <p><a href="mailto:hello@tableandthyme.example">deliziorest@gmail.com</a></p>
+            </article>
+            <article class="about-contact-card">
+                <h3>Give us a call</h3>
+                <p><a href="tel:07024567894">07856437593</a></p>
+            </article>
+            <article class="about-contact-card">
+                <h3>Visit us</h3>
+                <p>Muyenga,plot 2</p>
+            </article>
+            <article class="about-contact-card">
+                <h3>Our hours</h3>
+                <p>Monday–Friday, 9:00 AM–10:00 PM</p>
+            </article>
+        </div>
+    </section>
+</div>
+{% endblock %}
