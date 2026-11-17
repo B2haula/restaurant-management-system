@@ -1,0 +1,442 @@
+[
+{
+  "model": "Hotel.category",
+  "pk": 1,
+  "fields": {
+    "category_name": "dessert"
+  }
+},
+{
+  "model": "Hotel.category",
+  "pk": 2,
+  "fields": {
+    "category_name": "maincourse"
+  }
+},
+{
+  "model": "Hotel.category",
+  "pk": 3,
+  "fields": {
+    "category_name": "Appetizer"
+  }
+},
+{
+  "model": "Hotel.category",
+  "pk": 4,
+  "fields": {
+    "category_name": "drinks"
+  }
+},
+{
+  "model": "Hotel.category",
+  "pk": 5,
+  "fields": {
+    "category_name": "milkshake"
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 1,
+  "fields": {
+    "menu_name": "localfood",
+    "price": "28000.00",
+    "availability": "yes",
+    "category": 2
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 2,
+  "fields": {
+    "menu_name": "seafood",
+    "price": "300000.00",
+    "availability": "no",
+    "category": 2
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 3,
+  "fields": {
+    "menu_name": "westernfood",
+    "price": "49000.00",
+    "availability": "no",
+    "category": 2
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 4,
+  "fields": {
+    "menu_name": "beverages",
+    "price": "5000.00",
+    "availability": "yes",
+    "category": 4
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 5,
+  "fields": {
+    "menu_name": "chocolatecake",
+    "price": "12000.00",
+    "availability": "yes",
+    "category": 1
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 6,
+  "fields": {
+    "menu_name": "cocktail",
+    "price": "15000.00",
+    "availability": "yes",
+    "category": 4
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 7,
+  "fields": {
+    "menu_name": "oreo",
+    "price": "20000.00",
+    "availability": "no",
+    "category": 5
+  }
+},
+{
+  "model": "Hotel.menu",
+  "pk": 8,
+  "fields": {
+    "menu_name": "strawberrycake",
+    "price": "40000.00",
+    "availability": "yes",
+    "category": 3
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 1,
+  "fields": {
+    "menu_item": "posho",
+    "menu": 1
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 2,
+  "fields": {
+    "menu_item": "rice",
+    "menu": 1
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 3,
+  "fields": {
+    "menu_item": "meat",
+    "menu": 1
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 4,
+  "fields": {
+    "menu_item": "crub",
+    "menu": 2
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 5,
+  "fields": {
+    "menu_item": "noddles",
+    "menu": 2
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 6,
+  "fields": {
+    "menu_item": "soda",
+    "menu": 4
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 7,
+  "fields": {
+    "menu_item": "burger",
+    "menu": 3
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 8,
+  "fields": {
+    "menu_item": "jollofrice",
+    "menu": 3
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 9,
+  "fields": {
+    "menu_item": "juice",
+    "menu": 4
+  }
+},
+{
+  "model": "Hotel.menuitem",
+  "pk": 10,
+  "fields": {
+    "menu_item": "chips",
+    "menu": 3
+  }
+},
+{
+  "model": "Hotel.waiter",
+  "pk": 1,
+  "fields": {
+    "waiter_name": "hajjarah",
+    "birth_date": "2003-11-11",
+    "shift": "morning",
+    "contact": "0784537281",
+    "address": "kibuli",
+    "number_of_tables_assigned": 1
+  }
+},
+{
+  "model": "Hotel.waiter",
+  "pk": 2,
+  "fields": {
+    "waiter_name": "shillah",
+    "birth_date": "2001-12-11",
+    "shift": "day",
+    "contact": "0784362830",
+    "address": "bukoto",
+    "number_of_tables_assigned": 3
+  }
+},
+{
+  "model": "Hotel.waiter",
+  "pk": 3,
+  "fields": {
+    "waiter_name": "haula",
+    "birth_date": "2003-11-12",
+    "shift": "evening",
+    "contact": "0784537291",
+    "address": "kira",
+    "number_of_tables_assigned": 4
+  }
+},
+{
+  "model": "Hotel.waiter",
+  "pk": 4,
+  "fields": {
+    "waiter_name": "hana",
+    "birth_date": "2001-01-11",
+    "shift": "day",
+    "contact": "07046329173",
+    "address": "kireka",
+    "number_of_tables_assigned": 5
+  }
+},
+{
+  "model": "Hotel.waiter",
+  "pk": 5,
+  "fields": {
+    "waiter_name": "maya",
+    "birth_date": "2002-11-23",
+    "shift": "morning",
+    "contact": "0754728121",
+    "address": "muyenga",
+    "number_of_tables_assigned": 6
+  }
+},
+{
+  "model": "Hotel.tablee",
+  "pk": 1,
+  "fields": {
+    "location": "window",
+    "tablee_status": "Available",
+    "capacity": "10"
+  }
+},
+{
+  "model": "Hotel.tablee",
+  "pk": 2,
+  "fields": {
+    "location": "center",
+    "tablee_status": "Available",
+    "capacity": "1"
+  }
+},
+{
+  "model": "Hotel.tablee",
+  "pk": 3,
+  "fields": {
+    "location": "balcony",
+    "tablee_status": "Available",
+    "capacity": "2"
+  }
+},
+{
+  "model": "Hotel.tablee",
+  "pk": 4,
+  "fields": {
+    "location": "center",
+    "tablee_status": "Reserved",
+    "capacity": "5"
+  }
+},
+{
+  "model": "Hotel.tablee",
+  "pk": 5,
+  "fields": {
+    "location": "center",
+    "tablee_status": "occupied",
+    "capacity": "4"
+  }
+},
+{
+  "model": "Hotel.waitertablee",
+  "pk": 1,
+  "fields": {
+    "tablee": 1,
+    "waiter": 1
+  }
+},
+{
+  "model": "Hotel.waitertablee",
+  "pk": 2,
+  "fields": {
+    "tablee": 2,
+    "waiter": 2
+  }
+},
+{
+  "model": "Hotel.waitertablee",
+  "pk": 3,
+  "fields": {
+    "tablee": 3,
+    "waiter": 4
+  }
+},
+{
+  "model": "Hotel.waitertablee",
+  "pk": 4,
+  "fields": {
+    "tablee": 4,
+    "waiter": 3
+  }
+},
+{
+  "model": "Hotel.waitertablee",
+  "pk": 5,
+  "fields": {
+    "tablee": 1,
+    "waiter": 4
+  }
+},
+{
+  "model": "Hotel.order",
+  "pk": 1,
+  "fields": {
+    "order_type": "dinein",
+    "customer": "namakula",
+    "order_status": "pending",
+    "amount": "23000.00",
+    "menu": 1,
+    "order_date": "2026-11-13"
+  }
+},
+{
+  "model": "Hotel.order",
+  "pk": 2,
+  "fields": {
+    "order_type": "takeaway",
+    "customer": "felix",
+    "order_status": "confirmed",
+    "amount": "30000.00",
+    "menu": 2,
+    "order_date": "2026-11-16"
+  }
+},
+{
+  "model": "Hotel.order",
+  "pk": 3,
+  "fields": {
+    "order_type": "delivery",
+    "customer": "sanh",
+    "order_status": "availabe",
+    "amount": "200000.00",
+    "menu": 3,
+    "order_date": "2026-11-23"
+  }
+},
+{
+  "model": "Hotel.order",
+  "pk": 4,
+  "fields": {
+    "order_type": "takeaway",
+    "customer": "santi",
+    "order_status": "preparing",
+    "amount": "20000.00",
+    "menu": 4,
+    "order_date": "2026-11-15"
+  }
+},
+{
+  "model": "Hotel.order",
+  "pk": 5,
+  "fields": {
+    "order_type": "dinein",
+    "customer": "shuhat",
+    "order_status": "confirmed",
+    "amount": "39000.00",
+    "menu": 5,
+    "order_date": "2026-11-16"
+  }
+},
+{
+  "model": "Hotel.orderdetails",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "quantity": "1"
+  }
+},
+{
+  "model": "Hotel.orderdetails",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "quantity": "3"
+  }
+},
+{
+  "model": "Hotel.orderdetails",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "quantity": "2"
+  }
+},
+{
+  "model": "Hotel.orderdetails",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "quantity": "1"
+  }
+},
+{
+  "model": "Hotel.orderdetails",
+  "pk": 5,
+  "fields": {
+    "order": 5,
+    "quantity": "2"
+  }
+}
+]
